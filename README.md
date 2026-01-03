@@ -1,4 +1,4 @@
-# Web Development Journey
+## Web Development Journey
 
 **[🌐 Live Gallery](https://dmku33.github.io/mini-frontend-gallery/)**
 
@@ -6,7 +6,7 @@ Gallery of 5 mini web development projects with black & white aesthetic and spli
 
 ![Gallery Preview](assets/images/gallery-preview.png)
 
-## Projects
+### Projects
 
 1. **View Source** - ASCII art concrete poem about wildlife protection with interactive hover effects
 2. **Unbranding** - Critical design using Three.js 3D blocks to question Cursor as a "visionary" product
@@ -14,7 +14,7 @@ Gallery of 5 mini web development projects with black & white aesthetic and spli
 4. **Usability Test** - UX research dashboard presenting alphaXiv platform usability test results
 5. **Regenerative** - "Pixel Chronicles" - location & time-based generative pixel art landscapes
 
-## Live Projects
+### Live Projects
 
 All projects are hosted on GitHub Pages:
 - [View Source](https://dmku33.github.io/web-dev-view-source/)
