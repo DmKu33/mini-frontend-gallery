@@ -1,8 +1,8 @@
+![Gallery Preview](assets/images/gallery-preview.png)
+
 Gallery of 5 mini web development projects with black & white aesthetic and split-text hover effects. Built with vanilla JavaScript, CSS clip-path, and Intersection Observer API.
 
 **[🌐 Live Gallery](https://dmku33.github.io/mini-frontend-gallery/)**
-
-![Gallery Preview](assets/images/gallery-preview.png)
 
 ### Projects
 
