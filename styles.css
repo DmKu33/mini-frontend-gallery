@@ -1,6 +1,4 @@
-/* ==================== */
-/* CSS RESET & BASE     */
-/* ==================== */
+/* Base styles & CSS variables */
 
 * {
     margin: 0;
@@ -9,7 +7,7 @@
 }
 
 :root {
-    /* Colors - Black & White with Non-Traditional Accents */
+    /* Colors */
     --bg-primary: #000000;
     --bg-secondary: #0a0a0a;
     --bg-card: #111111;
@@ -21,21 +19,21 @@
     --accent-glow: rgba(255, 255, 255, 0.15);
     --border-color: rgba(255, 255, 255, 0.15);
     
-    /* Non-traditional accent colors */
+    /* Accent colors for project cards */
     --accent-electric: #ff4444;
     --accent-neon: #ff00ff;
     --accent-cyber: #00ccff;
     --accent-lime: #ccff00;
     --accent-violet: #9d00ff;
     
-    /* Spacing */
+    /* Spacing scale */
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
     --spacing-md: 2rem;
     --spacing-lg: 4rem;
     --spacing-xl: 6rem;
     
-    /* Typography */
+    /* Fonts */
     --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
     --font-mono: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
 }
@@ -52,31 +50,7 @@ body {
     overflow-x: hidden;
 }
 
-/* ==================== */
-/* CURSOR FOLLOWER      */
-/* ==================== */
-
-.cursor-follower {
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--text-primary);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.15s ease, opacity 0.3s ease;
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(1);
-    mix-blend-mode: difference;
-}
-
-body:hover .cursor-follower {
-    opacity: 0.6;
-}
-
-/* ==================== */
-/* HERO SECTION         */
-/* ==================== */
+/* Hero section */
 
 .hero {
     min-height: 100vh;
@@ -129,7 +103,7 @@ body:hover .cursor-follower {
 }
 
 .hero-title {
-    font-size: clamp(3rem, 10vw, 7rem);
+    font-size: clamp(2.7rem, 9vw, 6.5rem);
     font-weight: 900;
     line-height: 1.3;
     margin-bottom: var(--spacing-md);
@@ -137,6 +111,12 @@ body:hover .cursor-follower {
     position: relative;
     display: inline-block;
     cursor: pointer;
+    animation: rainbow 5s linear infinite;
+}
+
+@keyframes rainbow {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
 }
 
 .title-line {
@@ -316,9 +296,7 @@ body:hover .cursor-follower {
     50% { transform: translateY(10px) rotate(45deg); }
 }
 
-/* ==================== */
-/* GALLERY CONTAINER    */
-/* ==================== */
+/* Gallery container */
 
 .gallery-container {
     max-width: 1400px;
@@ -327,7 +305,6 @@ body:hover .cursor-follower {
     position: relative;
 }
 
-/* Timeline */
 .timeline {
     position: absolute;
     left: 50%;
@@ -347,11 +324,13 @@ body:hover .cursor-follower {
     .timeline {
         left: 30px;
     }
+    
+    .project-number {
+        top: 15px;
+    }
 }
 
-/* ==================== */
-/* PROJECT CARDS        */
-/* ==================== */
+/* Project cards */
 
 .project-card {
     position: relative;
@@ -375,7 +354,7 @@ body:hover .cursor-follower {
 .project-number {
     position: absolute;
     left: 50%;
-    top: 0;
+    top: 20px;
     transform: translateX(-50%);
     width: 60px;
     height: 60px;
@@ -505,7 +484,6 @@ body:hover .cursor-follower {
     }
 }
 
-/* Project Info */
 .project-info {
     flex: 1;
     z-index: 1;
@@ -652,7 +630,6 @@ body:hover .cursor-follower {
     transform: translateY(-2px);
 }
 
-/* Project Preview */
 .project-preview {
     flex: 1;
     z-index: 1;
@@ -711,7 +688,7 @@ body:hover .cursor-follower {
     background-color: var(--bg-secondary);
 }
 
-/* Screenshot previews */
+/* Project preview images */
 .frame-content[data-preview="view-source"] {
     background-image: url('assets/images/project-01-view-source.png');
 }
@@ -732,7 +709,7 @@ body:hover .cursor-follower {
     background-image: url('assets/images/project-05-regenerative.png');
 }
 
-/* Color overlay on hover for screenshots */
+/* Color overlays on hover */
 .project-card[data-project="1"] .frame-content::after {
     background: linear-gradient(135deg, rgba(255, 68, 68, 0.15) 0%, transparent 60%);
 }
@@ -753,7 +730,7 @@ body:hover .cursor-follower {
     background: linear-gradient(135deg, rgba(157,0,255,0.15) 0%, transparent 60%);
 }
 
-/* Add subtle noise texture */
+/* Subtle texture overlays */
 .frame-content::before {
     content: '';
     position: absolute;
@@ -767,7 +744,6 @@ body:hover .cursor-follower {
     mix-blend-mode: overlay;
 }
 
-/* Add subtle pattern overlay */
 .frame-content::after {
     content: '';
     position: absolute;
@@ -782,7 +758,7 @@ body:hover .cursor-follower {
     pointer-events: none;
 }
 
-/* Hover effects with color glow */
+/* Hover glow effects */
 .project-card[data-project="1"]:hover .frame-content {
     filter: brightness(1.15);
     box-shadow: inset 0 0 80px rgba(255, 68, 68, 0.15);
@@ -808,9 +784,7 @@ body:hover .cursor-follower {
     box-shadow: inset 0 0 80px rgba(157, 0, 255, 0.15);
 }
 
-/* ==================== */
-/* FOOTER               */
-/* ==================== */
+/* Footer */
 
 .footer {
     background: var(--bg-secondary);
@@ -855,9 +829,7 @@ body:hover .cursor-follower {
     color: var(--text-primary);
 }
 
-/* ==================== */
-/* RESPONSIVE           */
-/* ==================== */
+/* Responsive styles */
 
 @media (max-width: 768px) {
     :root {
@@ -870,7 +842,7 @@ body:hover .cursor-follower {
     }
     
     .hero-title {
-        font-size: clamp(2rem, 6vw, 4rem);
+        font-size: clamp(1.8rem, 5.5vw, 3.5rem);
     }
     
     .hero-meta {
@@ -893,9 +865,7 @@ body:hover .cursor-follower {
     }
 }
 
-/* ==================== */
-/* ANIMATIONS           */
-/* ==================== */
+/* Reduced motion support */
 
 @media (prefers-reduced-motion: reduce) {
     *,

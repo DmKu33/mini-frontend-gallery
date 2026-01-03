@@ -1,30 +1,4 @@
-// ==========================================
-// CUSTOM CURSOR FOLLOWER
-// ==========================================
-
-const cursorFollower = document.querySelector('.cursor-follower');
-
-document.addEventListener('mousemove', (e) => {
-    cursorFollower.style.left = e.clientX + 'px';
-    cursorFollower.style.top = e.clientY + 'px';
-});
-
-// Scale up cursor on interactive elements
-const interactiveElements = document.querySelectorAll('a, button, .project-card');
-
-interactiveElements.forEach(element => {
-    element.addEventListener('mouseenter', () => {
-        cursorFollower.style.transform = 'translate(-50%, -50%) scale(1.5)';
-    });
-    
-    element.addEventListener('mouseleave', () => {
-        cursorFollower.style.transform = 'translate(-50%, -50%) scale(1)';
-    });
-});
-
-// ==========================================
-// SCROLL ANIMATIONS
-// ==========================================
+// Scroll animations for project cards
 
 const observerOptions = {
     threshold: 0.15,
@@ -36,7 +10,6 @@ const projectCards = document.querySelectorAll('.project-card');
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
-            // Add staggered delay based on card index
             const delay = parseInt(entry.target.dataset.project) * 100;
             setTimeout(() => {
                 entry.target.style.animation = 'slideInView 0.8s ease-out forwards';
@@ -50,9 +23,7 @@ projectCards.forEach(card => {
     observer.observe(card);
 });
 
-// ==========================================
-// PARALLAX EFFECT ON SCROLL
-// ==========================================
+// Parallax effect on scroll
 
 let lastScrollY = window.scrollY;
 let ticking = false;
@@ -60,14 +31,12 @@ let ticking = false;
 function updateParallax() {
     const scrolled = window.scrollY;
     
-    // Parallax effect for project cards
     projectCards.forEach((card, index) => {
         const rect = card.getBoundingClientRect();
         const cardCenter = rect.top + rect.height / 2;
         const windowCenter = window.innerHeight / 2;
         const distance = cardCenter - windowCenter;
         
-        // Apply subtle parallax to preview frames
         const preview = card.querySelector('.preview-frame');
         if (preview) {
             const parallaxAmount = distance * 0.02;
@@ -87,9 +56,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// ==========================================
-// PROJECT CARD TILT EFFECT
-// ==========================================
+// Card tilt effect on mouse move
 
 projectCards.forEach(card => {
     const content = card.querySelector('.project-content');
@@ -119,9 +86,7 @@ projectCards.forEach(card => {
     });
 });
 
-// ==========================================
-// SMOOTH SCROLL FOR ANCHOR LINKS
-// ==========================================
+// Smooth scroll for anchor links
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -136,9 +101,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ==========================================
-// ANIMATED COUNTER FOR PROJECT NUMBERS
-// ==========================================
+// Animated counter for project numbers
 
 function animateNumber(element, target, duration = 1000) {
     const start = 0;
@@ -155,8 +118,6 @@ function animateNumber(element, target, duration = 1000) {
         element.textContent = String(Math.floor(current)).padStart(2, '0');
     }, 16);
 }
-
-// Animate numbers when they come into view
 const numberObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -172,9 +133,7 @@ document.querySelectorAll('.project-number').forEach(number => {
     numberObserver.observe(number);
 });
 
-// ==========================================
-// DYNAMIC GRADIENT SHIFT ON PREVIEW FRAMES
-// ==========================================
+// Dynamic gradient shift on preview frames
 
 projectCards.forEach(card => {
     const frameContent = card.querySelector('.frame-content');
@@ -190,16 +149,13 @@ projectCards.forEach(card => {
     });
 });
 
-// ==========================================
-// SCROLL PROGRESS INDICATOR
-// ==========================================
+// Scroll progress indicator
 
 function updateScrollProgress() {
     const scrollTop = window.scrollY;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const scrollPercent = (scrollTop / docHeight) * 100;
     
-    // Update timeline gradient based on scroll
     const timeline = document.querySelector('.timeline');
     if (timeline) {
         timeline.style.background = `linear-gradient(to bottom,
@@ -215,9 +171,7 @@ function updateScrollProgress() {
 window.addEventListener('scroll', updateScrollProgress);
 window.addEventListener('resize', updateScrollProgress);
 
-// ==========================================
-// FLOATING ANIMATION FOR SCROLL INDICATOR
-// ==========================================
+// Floating animation for scroll indicator
 
 const scrollIndicator = document.querySelector('.scroll-indicator');
 
@@ -230,11 +184,7 @@ if (scrollIndicator) {
     });
 }
 
-// ==========================================
-// LAZY LOAD ENHANCEMENT
-// ==========================================
-
-// Add shimmer loading effect to preview frames
+// Lazy load enhancement for preview frames
 projectCards.forEach(card => {
     const frameContent = card.querySelector('.frame-content');
     if (frameContent) {
@@ -243,17 +193,13 @@ projectCards.forEach(card => {
     }
 });
 
-// ==========================================
-// KEYBOARD NAVIGATION SUPPORT
-// ==========================================
+// Keyboard navigation support
 
 document.addEventListener('keydown', (e) => {
-    // Press 'h' to scroll to top
     if (e.key === 'h' || e.key === 'H') {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     
-    // Press number keys (1-5) to navigate to projects
     const num = parseInt(e.key);
     if (num >= 1 && num <= 5) {
         const targetCard = document.querySelector(`[data-project="${num}"]`);
@@ -263,11 +209,8 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// ==========================================
-// PERFORMANCE OPTIMIZATION
-// ==========================================
+// Performance optimization
 
-// Debounce function for scroll events
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -280,62 +223,21 @@ function debounce(func, wait) {
     };
 }
 
-// Apply debounce to resize events
 window.addEventListener('resize', debounce(() => {
     updateScrollProgress();
 }, 100));
 
-// ==========================================
-// INITIALIZE ON LOAD
-// ==========================================
+// Initialize on load
 
 window.addEventListener('load', () => {
-    // Initial scroll progress
     updateScrollProgress();
-    
-    // Add loaded class to body for any CSS transitions
     document.body.classList.add('loaded');
     
-    // Log welcome message to console
     console.log('%c🎨 Web Development Journey', 
         'font-size: 24px; font-weight: bold; color: #ffffff;');
     console.log('%cExploring Critical Web Design through 5 projects', 
         'font-size: 14px; color: #b0b0b0;');
     console.log('%cKeyboard shortcuts:\n  • Press "h" to scroll to top\n  • Press 1-5 to jump to projects', 
         'font-size: 12px; color: #707070; font-family: monospace;');
-});
-
-// ==========================================
-// EASTER EGG: KONAMI CODE
-// ==========================================
-
-let konamiCode = [];
-const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-
-document.addEventListener('keydown', (e) => {
-    konamiCode.push(e.key);
-    konamiCode.splice(-konamiSequence.length - 1, konamiCode.length - konamiSequence.length);
-    
-    if (konamiCode.join('') === konamiSequence.join('')) {
-        // Easter egg: Rainbow mode!
-        document.body.style.animation = 'rainbow 5s linear infinite';
-        
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes rainbow {
-                0% { filter: hue-rotate(0deg); }
-                100% { filter: hue-rotate(360deg); }
-            }
-        `;
-        document.head.appendChild(style);
-        
-        console.log('%c🌈 RAINBOW MODE ACTIVATED! 🌈', 
-            'font-size: 20px; font-weight: bold; background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); -webkit-background-clip: text; -webkit-text-fill-color: transparent;');
-        
-        setTimeout(() => {
-            document.body.style.animation = '';
-            style.remove();
-        }, 5000);
-    }
 });
 
