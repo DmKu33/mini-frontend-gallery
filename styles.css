@@ -413,12 +413,14 @@ body {
 
 @media (max-width: 968px) {
     .project-number {
-        left: 30px;
-        transform: translateX(-50%);
+        left: auto;
+        right: 6px;
+        top: 6px;
+        transform: none;
     }
     
     .project-card:hover .project-number {
-        transform: translateX(-50%) scale(1.1);
+        transform: scale(1.1);
     }
 }
 
@@ -481,6 +483,7 @@ body {
     .project-content {
         flex-direction: column !important;
         padding: var(--spacing-md);
+        gap: var(--spacing-md);
     }
 }
 
@@ -833,12 +836,13 @@ body {
 
 @media (max-width: 768px) {
     :root {
-        --spacing-lg: 3rem;
-        --spacing-xl: 4rem;
+        --spacing-lg: 2rem;
+        --spacing-xl: 3rem;
     }
     
     .hero {
         min-height: 80vh;
+        padding: var(--spacing-sm);
     }
     
     .hero-title {
@@ -849,19 +853,145 @@ body {
         font-size: 0.75rem;
     }
     
+    .gallery-container {
+        padding: var(--spacing-md) var(--spacing-sm);
+    }
+    
     .project-card {
-        margin-bottom: var(--spacing-lg);
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .project-content {
+        padding: var(--spacing-xs) !important;
+        gap: var(--spacing-xs) !important;
+        border-radius: 10px;
+    }
+    
+    .project-title {
+        font-size: clamp(1.2rem, 4.5vw, 1.6rem);
+        margin-bottom: 0.5rem;
+        padding-right: 50px;
+    }
+    
+    .project-description {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        margin-bottom: var(--spacing-xs);
+    }
+    
+    .project-tags {
+        gap: 0.25rem;
+        margin-bottom: var(--spacing-xs);
+    }
+    
+    .tag {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.7rem;
+    }
+    
+    .btn-primary, .btn-secondary {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
     }
     
     .project-number {
-        width: 50px;
-        height: 50px;
-        font-size: 1rem;
+        width: 40px;
+        height: 40px;
+        font-size: 0.85rem;
+        right: 4px;
+        top: 4px;
+    }
+    
+    .project-info {
+        padding-right: 0;
+    }
+    
+    .preview-frame {
+        border-radius: 8px;
+    }
+    
+    .frame-header {
+        padding: 0.6rem 0.8rem;
+    }
+    
+    .frame-url {
+        font-size: 0.7rem;
     }
     
     .footer-content {
         flex-direction: column;
         text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --spacing-md: 1rem;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2rem;
+    }
+    
+    .hero {
+        padding: var(--spacing-xs);
+    }
+    
+    .project-content {
+        padding: 0.75rem !important;
+        gap: 0.75rem !important;
+    }
+    
+    .project-title {
+        font-size: clamp(1.1rem, 5vw, 1.4rem);
+        margin-bottom: 0.4rem;
+        padding-right: 45px;
+    }
+    
+    .project-description {
+        font-size: 0.8rem;
+        line-height: 1.4;
+        margin-bottom: 0.75rem;
+    }
+    
+    .project-tags {
+        gap: 0.2rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .tag {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.65rem;
+    }
+    
+    .project-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        justify-content: center;
+        padding: 0.5rem 0.9rem;
+        font-size: 0.75rem;
+    }
+    
+    .project-number {
+        width: 35px;
+        height: 35px;
+        font-size: 0.75rem;
+        right: 2px;
+        top: 2px;
+    }
+    
+    .preview-frame {
+        border-radius: 6px;
+    }
+    
+    .frame-header {
+        padding: 0.5rem 0.6rem;
+    }
+    
+    .frame-url {
+        font-size: 0.65rem;
     }
 }
 
